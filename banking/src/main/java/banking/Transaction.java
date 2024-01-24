@@ -1,5 +1,7 @@
 package banking;
 
+import java.lang.reflect.Method;
+
 /**
  * A bank transaction implementation.
  */
@@ -14,20 +16,28 @@ public class Transaction implements TransactionInterface {
      * @throws Exception Account validation failed.
      */
     public Transaction(BankInterface bank, Long accountNumber, int attemptedPin) throws Exception {
-        // TODO: complete the constructor
+        if (!validateTransaction(bank, accountNumber, attemptedPin)) {
+            throw new RuntimeException("Invalid pin");
+        }
+
+        this.bank = bank;
+        this.accountNumber = accountNumber;
+    }
+
+    private boolean validateTransaction(BankInterface bank, Long accountNumber, int attemptedPin) {
+        return bank != null && accountNumber > 0 && attemptedPin > 0 && attemptedPin < 9999;
     }
 
     public double getBalance() {
-        // TODO: complete the method
-        throw new RuntimeException("TODO");
+        return bank.getBalance(accountNumber);
     }
 
     public void credit(double amount) {
-        // TODO: complete the method
+        bank.credit(accountNumber, amount);
     }
 
     public boolean debit(double amount) {
-        // TODO: complete the method
-        throw new RuntimeException("TODO");
+        return bank.debit(accountNumber, amount);
     }
+
 }
