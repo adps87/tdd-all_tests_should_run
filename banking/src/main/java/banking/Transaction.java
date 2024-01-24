@@ -1,13 +1,11 @@
 package banking;
 
-import java.lang.reflect.Method;
-
 /**
  * A bank transaction implementation.
  */
 public class Transaction implements TransactionInterface {
-    private Long accountNumber;
-    private BankInterface bank;
+    private final Long accountNumber;
+    private final BankInterface bank;
 
     /**
      * @param bank          The bank where the account is housed.
@@ -17,7 +15,7 @@ public class Transaction implements TransactionInterface {
      */
     public Transaction(BankInterface bank, Long accountNumber, int attemptedPin) throws Exception {
         if (!validateTransaction(bank, accountNumber, attemptedPin)) {
-            throw new RuntimeException("Invalid pin");
+            throw new Exception("Invalid pin");
         }
 
         this.bank = bank;

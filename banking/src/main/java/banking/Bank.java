@@ -1,13 +1,12 @@
 package banking;
 
-import java.lang.reflect.Method;
 import java.util.*;
 
 /**
  * The Bank implementation.
  */
 public class Bank implements BankInterface {
-    private LinkedHashMap<Long, Account> accounts = new LinkedHashMap<>();
+    private final LinkedHashMap<Long, Account> accounts;
     private Account account;
     private Long accountNumber;
 
@@ -28,7 +27,7 @@ public class Bank implements BankInterface {
             .max(Map.Entry.comparingByKey());
 
         return accountNumberOptional
-            .map(key -> key.getKey() + 1)
+            .map(key -> key.getValue().getAccountNumber() + 1)
             .orElse(1L);
     }
 

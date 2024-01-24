@@ -6,8 +6,8 @@ import java.util.Objects;
  * The concrete Account holder of Person type.
  */
 public class Person extends AccountHolder {
-    private String firstName;
-    private String lastName;
+    private final String firstName;
+    private final String lastName;
 
     public Person(String firstName, String lastName, int idNumber) {
         super(idNumber);

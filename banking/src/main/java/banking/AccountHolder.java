@@ -6,7 +6,7 @@ import java.util.Objects;
  * Abstract Account Holder.
  */
 public abstract class AccountHolder {
-    private int idNumber;
+    private final int idNumber;
 
     /**
      * @param idNumber The holder unique ID.

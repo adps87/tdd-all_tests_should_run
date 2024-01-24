@@ -4,9 +4,9 @@ package banking;
  * Abstract bank account.
  */
 public abstract class Account implements AccountInterface {
-    private AccountHolder accountHolder;
-    private Long accountNumber;
-    private int pin;
+    private final AccountHolder accountHolder;
+    private final Long accountNumber;
+    private final int pin;
     private double balance;
 
     protected Account(AccountHolder accountHolder, Long accountNumber, int pin, double startingDeposit) {
@@ -21,7 +21,7 @@ public abstract class Account implements AccountInterface {
     }
 
     public boolean validatePin(int attemptedPin) {
-        return attemptedPin != 0 && attemptedPin >= 0 && attemptedPin < 9999;
+        return attemptedPin != 0 && attemptedPin >= 0 && attemptedPin < 9999 && pin != attemptedPin;
     }
 
     public double getBalance() {

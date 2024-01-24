@@ -8,10 +8,11 @@ import java.util.List;
  * The account's holder is a {@link Company}.
  */
 public class CommercialAccount extends Account {
-    private List<Person> authorizedUsers = new ArrayList<>();
+    private final List<Person> authorizedUsers;
 
     public CommercialAccount(Company company, Long accountNumber, int pin, double startingDeposit) {
         super(company, accountNumber, pin, startingDeposit);
+        authorizedUsers = new ArrayList<>();
     }
 
     /**
