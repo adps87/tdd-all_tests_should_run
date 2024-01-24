@@ -90,8 +90,8 @@ public class Bank implements BankInterface {
     }
 
     public boolean authenticateUser(Long accountNumber, int pin) {
-        // TODO: complete the method
-        throw new RuntimeException("TODO");
+        account = getAccount(accountNumber);
+        return account.validatePin(pin);
     }
 
     public void addAuthorizedUser(Long accountNumber, Person authorizedPerson) {
